@@ -1,5 +1,5 @@
 package Lesson1;
-
+//
 public class Wall {
     private double height;
     public Wall(double height) {

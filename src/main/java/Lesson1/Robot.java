@@ -1,5 +1,5 @@
 package Lesson1;
-
+//
 public class Robot {
     private String name;
     private int range;
