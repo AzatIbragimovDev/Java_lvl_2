@@ -1,20 +1,34 @@
 package Lesson1;
 //
-public class Robot {
-    private String name;
-    private int range;
-    private double jumpHeight;
-    private boolean success = false;
-    public Robot(String name, int range, double jumpHeight) {
-        this.name = name;
-        this.range = range;
+public class Robot implements Entity{
+    final int runDistance;
+    final double jumpHeight;
+    final String name;
+
+    public Robot(int runDistance, double jumpHeight, String name) {
+        this.runDistance = runDistance;
         this.jumpHeight = jumpHeight;
+        this.name = name;
     }
-    public void run(Track t) {
-        success = t.runDistance(range, name, t.getDistance());
+
+    @Override
+    public boolean run(int getTrackDistance) {
+        if(runDistance >= getTrackDistance) {
+            System.out.println("The Robot is runing...");
+            return true;
+        }
+        System.out.println("The Robot is failed run...");
+        return false;
     }
-    public void jump(Wall w) {
-        success = w.leap(jumpHeight, name, w.getHeight());
+
+    @Override
+    public boolean jump(double getWallHeight) {
+        if(jumpHeight >= getWallHeight) {
+            System.out.println("The Robot is jumping...");
+            return true;
+        }
+        System.out.println("The Robot is failed jump...");
+        return false;
     }
 
 }

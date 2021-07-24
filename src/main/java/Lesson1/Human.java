@@ -1,27 +1,34 @@
 package Lesson1;
-//
-public class Human {
-    private String name;
-    private int range;
-    private double jumpHeight;
-    public boolean success = false;
-    public Human(String name, int range, double jumpHeight) {
+public class Human implements Entity {
+    final int runDistance;
+    final double jumpHeight;
+    final String name;
+
+    public Human(int runDistance, double jumpHeight, String name) {
+        this.runDistance = runDistance;
         this.name = name;
-        this.range = range;
         this.jumpHeight = jumpHeight;
+    }
 
+    @Override
+    public boolean run(int getTrackDistance) {
+        if(runDistance >= getTrackDistance) {
+            System.out.println("The man is runing...");
+            return true;
+        }
+            System.out.println("The man is failed run...");
+        return false;
     }
-    public boolean run(Track t) {
-        success = t.runDistance(range, name, t.getDistance());
-        if(success){
-        return true;}
-        else  return false;
-    }
-    public boolean jump(Wall w) {
-        success = w.leap(jumpHeight, name, w.getHeight());
 
-        if(success){
-            return true;}
-        else  return false;
+    @Override
+    public boolean jump(double getWallHeight) {
+        if(jumpHeight >= getWallHeight) {
+            System.out.println("The man is jumping...");
+            return true;
+        }
+            System.out.println("The man is failed jump...");
+        return false;
     }
+
+
 }
